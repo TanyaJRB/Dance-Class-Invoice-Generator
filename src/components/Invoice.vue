@@ -125,7 +125,7 @@ const monthTotal = computed(() => {
       </div>
       <div class="flex flex-col">
        <AppInput :label="'Class Name'" id="className" v-model="irregularLineItem.className"></AppInput>
-        <AppInput :label="'Price (£)'" id="price" v-model="irregularLineItem.price"></AppInput>
+        <AppInput :label="'Price (£)'" id="price" v-model.number="irregularLineItem.price"></AppInput>
        <AppInput :label="'Time'" id="time" v-model="irregularLineItem.time" placeholder="1:15pm"></AppInput>
         <button class="text-slate-600 font-bold rounded-lg p-3 mt-10 w-full bg-sky-200 hover:bg-cyan-900 hover:text-white" @click="submitIrregularLineItem()">Submit</button>
       </div>
