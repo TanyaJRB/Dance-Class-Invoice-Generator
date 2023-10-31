@@ -6,6 +6,7 @@ import { ClassLineItem, RegularServices, standardPrice, WEEKDAYS, MONTHS, Invoic
 import AppModal from './AppModal.vue';
 import AppInput from './AppInput.vue';
 import AppDropdown from './AppDropdown.vue';
+import IconEdit from '../components/icons/IconEdit.vue';
 import { useInvoice } from '../composables/use.invoice';
 
 const { invoiceMonthData, selectedMonth } = useInvoice();
@@ -92,13 +93,22 @@ watch((lineItems.value), (newVal) => {
     }
 })
 
+function editMonth(month: string) {
+    selectedMonth.value = month;
+}
+
 </script>
 
     
 <template>
     <div class="bg-slate-300 rounded p-4">
-        <div class="text-center text-lg font-bold bg-slate-400">{{ month }}</div>
+        <button v-if="month !== selectedMonth" class="text-center text-lg font-bold bg-slate-400 flex flex-row justify-center gap-x-2 p-1 rounded"
+        @click="editMonth(month)">
+            <div>{{ month }}</div>
+            <IconEdit class="w-6 h-6"/>
+        </button>
         <div v-if="month === selectedMonth"> 
+            <div class="text-center text-lg font-bold bg-slate-400">{{ month }}</div>
             <div class="font-bold m-2 text-center">Regular Classes</div>
         <div class="grid grid-cols-3 gap-x-4 text-center">
         <div v-for="service in RegularServices" :key="service">
