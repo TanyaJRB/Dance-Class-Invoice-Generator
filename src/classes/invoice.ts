@@ -19,3 +19,8 @@ export const standardPrice = 25;
 export const WEEKDAYS = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
 export const MONTHS = ["January", "Feburary", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 export const YEARS = ["2022", "2023", "2024"];
+
+export type InvoiceMonthData = {
+    month: string,
+    lineItems: ClassLineItem[]
+};
