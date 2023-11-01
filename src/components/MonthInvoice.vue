@@ -2,6 +2,9 @@
 import { computed, Ref, toRefs } from 'vue'
 import '@vuepic/vue-datepicker/dist/main.css'
 import { ClassLineItem } from '../classes/invoice';
+import { useInvoice } from '../composables/use.invoice';
+
+const { getMonthTotal } = useInvoice();
 
 interface MonthInvoiceProps {
   month: string;
@@ -20,11 +23,8 @@ const lineItemsSorted = computed(() => {
 })
 
 const monthTotal = computed(() => {
-  let counter = 0;
-  for (const item of lineItems.value) {
-    counter += item.price;
-  }
-  return counter;
+    const mt = lineItems.value.length ? getMonthTotal(lineItems.value) : 0;
+    return mt;
   });
 
 

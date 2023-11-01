@@ -46,7 +46,7 @@ function addMonth() {
             <div class="font-bold">Account Holder</div><div>{{ bankDetails.acHolder }}</div>
             <div class="font-bold">Account Number</div><div>{{ bankDetails.acNumber }}</div>
             <div class="font-bold">Sort Code</div><div>{{ bankDetails.sortCode }}</div>
-            <div class="font-bold text-pink-950 my-3">Invoice Total</div><div class="font-bold text-pink-950 my-3">{{ invoiceTotal }}</div>
+            <div class="font-bold text-pink-950 my-3">Invoice Total</div><div class="font-bold text-pink-950 my-3">£{{ invoiceTotal }}</div>
           </div>
         </div>
       
