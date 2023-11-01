@@ -22,17 +22,20 @@ function addMonth() {
 </script>
 
 <template>
-  <div class="px-80 py-20">
-    <AppDropdown id="year" :selection-list="YEARS" v-model="year" label="Select a Year:"></AppDropdown>
-    <div class="flex flex-row justify-center align-middle m-4">
-            <button v-if="showAddMonthButton" class="border-2 border-black rounded rounded-lg p-4 font-bold" @click="showAddMonthButton = false">+ Add a month</button>
-            <div v-else class="flex flex-row border-2 border-black rounded-lg p-2">
-              <AppDropdown id="month" :selection-list="MONTHS" v-model="selectedMonth" label="Select a Month:"></AppDropdown>
-              <button @click="addMonth()" class="border-2 border-black rounded rounded-lg p-2 font-bold bg-green-100">Confirm</button>
-            </div>
-        </div>
-    <MonthForm v-for="md in invoiceMonthData" :key="md.month" :month="md.month"/>
-    <div class="p-20 border border-2 border-black m-5 mt-20 text-center flex">
+  <div class="grid grid-cols-3 bg-slate-700 h-screen">
+    <div id="selection-panel" class="bg-slate-400 col-span-1">
+      <AppDropdown id="year" :selection-list="YEARS" v-model="year" label="Select year for invoice:" class="m-4"></AppDropdown>
+      <div class="flex flex-row justify-center align-middle m-4">
+          <button v-if="showAddMonthButton" class="border-2 border-black rounded rounded-lg p-4 font-bold bg-slate-600 text-white" @click="showAddMonthButton = false">+ Add a month</button>
+          <div v-else class="flex flex-row border-2 border-black rounded-lg p-2">
+            <AppDropdown id="month" :selection-list="MONTHS" v-model="selectedMonth" label="Select a month:"></AppDropdown>
+            <button @click="addMonth()" class="border-2 border-black rounded rounded-lg p-2 font-bold bg-green-100">Confirm</button>
+          </div>
+      </div>
+      <MonthForm v-for="md in invoiceMonthData" :key="md.month" :month="md.month"/>
+    </div>
+    
+    <div id="invoice-content" class="p-20 border border-2 border-black m-5 text-center flex col-span-2 bg-white">
       <div class="flex flex-col w-full">
         <div class="text-xl font-bold mt-2 mb-10">INVOICE</div>
         <div class="flex flex-row w-full justify-end">

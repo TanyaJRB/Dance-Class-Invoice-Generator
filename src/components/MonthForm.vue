@@ -101,7 +101,7 @@ function editMonth(month: string) {
 
     
 <template>
-    <div class="bg-slate-300 rounded p-4">
+    <div class="bg-slate-300 rounded p-4 m-4">
         <button v-if="month !== selectedMonth" class="text-center text-lg font-bold bg-slate-400 flex flex-row justify-center gap-x-2 p-1 rounded"
         @click="editMonth(month)">
             <div>{{ month }}</div>
