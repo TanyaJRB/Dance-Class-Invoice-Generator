@@ -31,7 +31,7 @@ const monthTotal = computed(() => {
 </script>
 
 <template>
-    <div class="border border-black text-center py-4 rounded my-4"> 
+    <div class="border border-black text-center rounded my-2"> 
         <div class="m-3 font-bold text-xl">{{ month + ' ' + year}}</div>
         <div v-for="item, id in lineItemsSorted" :key="id">
         <div class="grid grid-cols-4 gap-x-10">

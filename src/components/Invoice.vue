@@ -19,6 +19,11 @@ function addMonth() {
   showAddMonthButton.value = true;
 }
 
+function isLastItem(item): boolean {
+  const lastItem = invoiceMonthData.value[invoiceMonthData.value.length - 1];
+  return item == lastItem;
+}
+
 </script>
 
 <template>
@@ -38,6 +43,13 @@ function addMonth() {
     <div id="invoice-content" class="p-20 border border-2 border-black m-5 text-center flex col-span-2 bg-white">
       <div class="flex flex-col w-full">
         <div class="text-xl font-bold mt-2 mb-10">INVOICE</div>
+        <div class="flex flex-row gap-x-2">
+          <div class="font-bold">Invoice Period: </div>
+          <div>
+            <span v-for="md in invoiceMonthData" :key="md.month">{{ md.month }}<span v-if="!isLastItem(md)">, </span></span>
+          </div>
+        </div>
+        
         <div class="flex flex-row w-full justify-end">
           <div class="grid grid-cols-2 text-end w-1/3">
             <div class="font-bold">Full Name</div><div>{{ fullName }}</div>
@@ -46,7 +58,7 @@ function addMonth() {
             <div class="font-bold">Account Holder</div><div>{{ bankDetails.acHolder }}</div>
             <div class="font-bold">Account Number</div><div>{{ bankDetails.acNumber }}</div>
             <div class="font-bold">Sort Code</div><div>{{ bankDetails.sortCode }}</div>
-            <div class="font-bold text-pink-950 my-3">Invoice Total</div><div class="font-bold text-pink-950 my-3">£{{ invoiceTotal }}</div>
+            <div class="font-bold text-lg text-red-500 my-3">Invoice Total</div><div class="font-bold text-lg text-red-500 my-3">£{{ invoiceTotal }}</div>
           </div>
         </div>
       
