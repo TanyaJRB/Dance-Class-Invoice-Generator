@@ -65,6 +65,9 @@ function isLastItem(item): boolean {
         <div v-for="md in invoiceMonthData" :key="md.month">
           <MonthInvoice :month="md.month" :year="year" :line-items="md.lineItems"/>
         </div>
+
+        <div class="mt-8 text-xs justify-end text-end">{{ disclaimer }}</div>
+        <div class="text-xs justify-end text-end font-bold italic">{{ signature }}</div>
         
       </div>
     </div>
