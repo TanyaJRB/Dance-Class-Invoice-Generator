@@ -8,13 +8,14 @@ export type ClassLineItem = {
 };
 
 export enum RegularServices {
-    AerialHoopImprovers = 'Aerial Hoop Improvers',
+    L3 = 'Aerial Hoop Level 3',
+    L2 = 'Aerial Hoop Level 2',
+    L1 = 'Aerial Hoop Level 1',
     AerialHoopConditioning = 'Aerial Hoop Conditioning',
-    AerialHoopMixed = 'Aerial Hoop Mixed',
     Irregular = 'Irregular',
 };
 
-export const standardPrice = 25;
+export const standardPrice = 27.50;
 
 export const WEEKDAYS = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
 export const MONTHS = ["January", "Feburary", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
