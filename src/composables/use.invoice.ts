@@ -1,5 +1,5 @@
 import { createSharedComposable } from '@vueuse/core';
-import { Ref, ref, computed } from 'vue';
+import { Ref, ref, computed, ComputedRef } from 'vue';
 import { YEARS, InvoiceMonthData, MONTHS } from '../classes/invoice';
 
 interface UseInvoiceReturn {
@@ -8,6 +8,7 @@ interface UseInvoiceReturn {
     selectedMonth: Ref<string>;
     invoiceTotal: Ref<number>;
     getMonthTotal(lineItems: ClassLineItem[]): number;
+    datePickerOpenDate: ComputedRef<Date>;
 }
 
 const year = ref(YEARS[1]);
@@ -25,6 +26,12 @@ function useInvoiceComposable(): UseInvoiceReturn {
         return total;
     });
 
+    const datePickerOpenDate = computed(()=> {
+        const monthIndex = MONTHS.indexOf(selectedMonth.value);
+        const yearNum = parseInt(year.value);
+        return new Date(yearNum, monthIndex, 1);
+    })
+
     function getMonthTotal(lineItems: ClassLineItem[]): number {
         let monthTotal = 0;
         for (const item of lineItems) {
@@ -39,6 +46,7 @@ function useInvoiceComposable(): UseInvoiceReturn {
       selectedMonth,
       invoiceTotal,
       getMonthTotal,
+      datePickerOpenDate
   };
 }
 

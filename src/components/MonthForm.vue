@@ -9,7 +9,7 @@ import AppDropdown from './AppDropdown.vue';
 import IconEdit from '../components/icons/IconEdit.vue';
 import { useInvoice } from '../composables/use.invoice';
 
-const { invoiceMonthData, selectedMonth } = useInvoice();
+const { invoiceMonthData, selectedMonth, year, datePickerOpenDate } = useInvoice();
 
 
 interface MonthFormProps {
@@ -114,13 +114,13 @@ function editMonth(month: string) {
         <div v-for="service in RegularServices" :key="service">
           <div v-if="service !== RegularServices.Irregular">
             <div>{{ service }}</div>
-            <VueDatePicker @update:model-value="addDateToList($event, service)" multi-dates></VueDatePicker>
+            <VueDatePicker @update:model-value="addDateToList($event, service)" multi-dates :start-date="datePickerOpenDate"></VueDatePicker>
           </div>
         </div>
         <div>
           <div class="font-bold m-2 text-center">One-Off Classes:</div>
           <div>
-            <VueDatePicker @update:model-value="addDateToList($event, RegularServices.Irregular)"></VueDatePicker>
+            <VueDatePicker @update:model-value="addDateToList($event, RegularServices.Irregular)" :start-date="datePickerOpenDate"></VueDatePicker>
           </div>
         </div>
         <AppModal v-model="showIrregularServiceModal" title="Add One-Off Class Details" class="justify-center">
